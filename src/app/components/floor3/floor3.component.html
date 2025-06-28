@@ -1,0 +1,37 @@
+<p>floor3 works!</p>
+
+<h2>Configuración de Días y Horas Pico</h2>
+<div style="display: flex; gap: 20px; align-items: flex-end; margin-bottom: 20px;">
+  <div>
+    <label for="cantidadDias">Cantidad de días:</label><br>
+    <input id="cantidadDias" type="number" [(ngModel)]="cantidadDias" min="1" style="width: 120px;">
+  </div>
+  <div>
+    <label for="horaPicoManana">Hora pico mañana:</label><br>
+    <input id="horaPicoManana" type="time" [(ngModel)]="horaPicoManana" style="width: 120px;">
+  </div>
+  <div>
+    <label for="horaPicoTarde">Hora pico tarde:</label><br>
+    <input id="horaPicoTarde" type="time" [(ngModel)]="horaPicoTarde" style="width: 120px;">
+  </div>
+  <button type="button" (click)="generarTabla()" style="height: 32px;">Generar tabla</button>
+</div>
+
+<table *ngIf="tablaDias.length > 0" border="1" style="margin-top:10px;">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Día</th>
+      <th>Hora pico mañana</th>
+      <th>Hora pico tarde</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let dia of tablaDias; let i = index">
+      <td>{{ i + 1 }}</td>
+      <td>Día {{ i + 1 }}</td>
+      <td>{{ dia.horaManana }}</td>
+      <td>{{ dia.horaTarde }}</td>
+    </tr>
+  </tbody>
+</table>
